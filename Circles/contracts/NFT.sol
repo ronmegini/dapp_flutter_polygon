@@ -1,7 +1,7 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.4;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import '@openzeppelin/contracts/utils/Counters.sol';
+import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract NFT is ERC721, Ownable {
@@ -12,7 +12,7 @@ contract NFT is ERC721, Ownable {
     tokenCounter = 0;
     }
 
-    function mint(string memory _tokenURI) public ownerOnly {
+    function mint(string memory _tokenURI) public onlyOwner {
        _safeMint(msg.sender, tokenCounter);
        _setTokenURI(tokenCounter, _tokenURI);
        tokenCounter++;
